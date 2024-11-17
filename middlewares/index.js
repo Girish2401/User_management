@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../users/users.model");
 const rateLimit = require("express-rate-limit");
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || "my_jwt_secret_key";
 
 const authenticatorjwt = (req, res, next) => {
   const token = req.headers["authorization"]?.split(" ")[1];
@@ -34,4 +34,4 @@ const loginRateLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
 });
-module.exports = { checkAccountSuspension, authenticatorjwt ,loginRateLimiter };
+module.exports = { checkAccountSuspension, authenticatorjwt, loginRateLimiter };

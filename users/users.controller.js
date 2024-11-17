@@ -2,7 +2,7 @@ const User = require("./users.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || "my_jwt_secret_key";
 const saltRounds = 10;
 
 exports.addUser = async (req, res) => {
